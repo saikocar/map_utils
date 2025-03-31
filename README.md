@@ -10,7 +10,7 @@
 - `input.osm`:入力するosmファイルのパス
 - `--step`:点群を充填する間隔を指定するパラメータ。指定しない場合はデフォルトで0.1が使用される。
 - 出力されるファイル名は入力された.osmファイルの名前に_plantが付与されたものになります。例えばhogepiyo.osmを入力したならhogepiyo_plant.pcdとなります。また同名のファイルが存在した場合はシリアル番号が付与されます。
-osmファイルは充填したい範囲の情報が含まれている必要があります。範囲の指定方法についてはplant_area_makerの[README.md](https://github.com/リンクをかくにんしてから書き直す)に説明があります。
+osmファイルは充填したい範囲の情報が含まれている必要があります。範囲の指定方法についてはplant_area_makerの[README.md](https://github.com/minamidani/map_utils/blob/main/plant_area_maker/README.md)に説明があります。
 
 ## ライセンス
 現在、ライセンスの選定を行っています。決定次第、こちらに記載します。（記載日：2025年3月31日、4月4日を目安に）
