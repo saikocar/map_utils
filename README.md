@@ -26,8 +26,5 @@ Relation ID: ......
 
 [osm_relation_checkerのREADME.md](https://github.com/minamidani/map_utils/blob/main/osm_relation_checker/README.md)に詳細な説明があります。
 
-## ライセンス
-現在、ライセンスの選定を行っています。決定次第、こちらに記載します。（記載日：2025年3月31日、4月4日を目安に）
-
 ## 問題報告
 問題を報告したい場合は、[Issues](https://github.com/minamidani/map_utils/issues) にて報告してください。
