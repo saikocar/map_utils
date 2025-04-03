@@ -26,5 +26,15 @@ Relation ID: ......
 
 [osm_relation_checkerのREADME.md](https://github.com/minamidani/map_utils/blob/main/osm_relation_checker/README.md)に詳細な説明があります。
 
+## make_crosswalk_polygon
+crosswalkのpointに連動するcrosswalk_polygonを生成するスクリプトです。
+osmファイルに対して破壊的な変更は行いませんが入力及び出力ファイルをテキストエディタで処理した後にVector Map Builderで適宜処理する必要があります。
+### Quick Manual
+`python3 make_crosswalk_maker.py input.osm`
+- `input.osm`:入力するosmファイルのパス
+- **出力** ： `input_append.osm`
+
+[make_crosswalk_polygonのREADME.md](https://github.com/minamidani/map_utils/blob/main/make_crosswalk_polygon/README.md)に詳細な説明があります。
+
 ## 問題報告
 問題を報告したい場合は、[Issues](https://github.com/minamidani/map_utils/issues) にて報告してください。
