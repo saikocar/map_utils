@@ -25,13 +25,19 @@
 スクリプトを実行するには、次のコマンドを使用します:
 
 ```bash
-python plant_area_maker.py <osm_file> --step <step_size>
+python plant_area_maker.py <osm_file> --step <step_size> --intensity <intensity_param>
+```
+または
+```bash
+python plant_area_maker.py <osm_file> --step <step_size> --rgb <r> <g> <b>
 ```
 
 ### 引数
 
 - `<osm_file>`: osmファイルのパス。
 - `--step <step_size>`: （オプション）車線境界に沿って点を生成するためのステップサイズ。指定しない場合、デフォルト値は `0.1` です。
+- `--intensity <intensity_param>`: （オプション）intensityのパラメータを指定します。デフォルト値は`1`です。
+- `--rgb <r> <g> <b>`: （オプション）rgbのパラメータを指定します。このオプションを利用しない場合pcdファイルは`x y z intensity`で保存します。
 
 ### 例
 
@@ -39,7 +45,14 @@ python plant_area_maker.py <osm_file> --step <step_size>
 python plant_area_maker.py map.osm --step 0.05
 ```
 
-これにより、`map.osm` ファイルが処理され、ステップサイズ `0.05` で点が生成されます。
+これにより、`map.osm` ファイルが処理され、ステップサイズ `0.05` 、intensity`1`で点が生成されます。
+
+```bash
+python plant_area_maker.py map.osm --step 0.02 --rgb 255 255 255
+```
+
+こちらの場合は、`map.osm` ファイルが処理され、ステップサイズ `0.02` 、`R=255,G=255,B=255`で点が生成されます。
+
 
 ## 出力
 
