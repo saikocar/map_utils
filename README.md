@@ -36,5 +36,14 @@ osmファイルに対して破壊的な変更は行いませんが入力及び�
 
 [make_crosswalk_polygonのREADME.md](https://github.com/minamidani/map_utils/blob/main/make_crosswalk_polygon/README.md)に詳細な説明があります。
 
+## remove_dummy_relations
+ダミーのレーンを削除するスクリプトです。
+### Quick Manual
+`python3 remove_dummy_relations.py input.osm`
+- `input.osm`:入力するosmファイルのパス
+- **出力** ： `input_DE.osm`
+
+[remove_dummy_relationsのREADME.md](https://github.com/minamidani/map_utils/blob/main/remove_dummy_relations/README.md)に詳細な説明があります。
+
 ## 問題報告
 問題を報告したい場合は、[Issues](https://github.com/minamidani/map_utils/issues) にて報告してください。
