@@ -10,7 +10,7 @@
 - `input.osm`:入力するosmファイルのパス
 - `--step`:点群を充填する間隔を指定するパラメータ。指定しない場合はデフォルトで0.1が使用される。
 - 出力されるファイル名は入力された.osmファイルの名前に_plantが付与されたものになります。例えばhogepiyo.osmを入力したならhogepiyo_plant.pcdとなります。また同名のファイルが存在した場合はシリアル番号が付与されます。
-osmファイルは充填したい範囲の情報が含まれている必要があります。範囲の指定方法については[plant_area_makerのREADME.md](https://github.com/minamidani/map_utils/blob/main/plant_area_maker/README.md)に説明があります。
+osmファイルは充填したい範囲の情報が含まれている必要があります。範囲の指定方法については[plant_area_makerのREADME.md](https://github.com/saikocar/map_utils/blob/main/plant_area_maker/README.md)に説明があります。
 
 ## osm_relation_checker
 .osmファイルで左右のLineStringのPoint(osmのnode)の数が異なるLane(osmのrelation)のidを表示するスクリプトが`osm_relation_checker`ディレクトリ内にあります。
@@ -24,7 +24,7 @@ Relation ID: ......
 ```
 （該当するものがない場合はNo relations found with differing left and right node counts.のメッセージが表示されます）
 
-[osm_relation_checkerのREADME.md](https://github.com/minamidani/map_utils/blob/main/osm_relation_checker/README.md)に詳細な説明があります。
+[osm_relation_checkerのREADME.md](https://github.com/saikocar/map_utils/blob/main/osm_relation_checker/README.md)に詳細な説明があります。
 
 ## make_crosswalk_polygon
 crosswalkのpointに連動するcrosswalk_polygonを生成するスクリプトです。
@@ -34,7 +34,7 @@ osmファイルに対して破壊的な変更は行いませんが入力及び�
 - `input.osm`:入力するosmファイルのパス
 - **出力** ： `input_append.osm`
 
-[make_crosswalk_polygonのREADME.md](https://github.com/minamidani/map_utils/blob/main/make_crosswalk_polygon/README.md)に詳細な説明があります。
+[make_crosswalk_polygonのREADME.md](https://github.com/saikocar/map_utils/blob/main/make_crosswalk_polygon/README.md)に詳細な説明があります。
 
 ## remove_dummy_relations
 ダミーのレーンを削除するスクリプトです。
@@ -43,7 +43,7 @@ osmファイルに対して破壊的な変更は行いませんが入力及び�
 - `input.osm`:入力するosmファイルのパス
 - **出力** ： `input_DE.osm`
 
-[remove_dummy_relationsのREADME.md](https://github.com/minamidani/map_utils/blob/main/remove_dummy_relations/README.md)に詳細な説明があります。
+[remove_dummy_relationsのREADME.md](https://github.com/saikocar/map_utils/blob/main/remove_dummy_relations/README.md)に詳細な説明があります。
 
 ## 問題報告
-問題を報告したい場合は、[Issues](https://github.com/minamidani/map_utils/issues) にて報告してください。
+問題を報告したい場合は、[Issues](https://github.com/saikocar/map_utils/issues) にて報告してください。
