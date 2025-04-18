@@ -45,5 +45,15 @@ osmファイルに対して破壊的な変更は行いませんが入力及び�
 
 [remove_dummy_relationsのREADME.md](https://github.com/saikocar/map_utils/blob/main/remove_dummy_relations/README.md)に詳細な説明があります。
 
+## find_collinear_nodes
+レーンの形状に寄与しない直線上の点を削除するスクリプトです。
+### Quick Manual
+`python3 find_collinear_nodes input.osm　--eps 0.1`
+- `input.osm`:入力するosmファイルのパス
+- `--eps`:直線上の誤差（点群のスケール依存）
+- **出力** ： 実行ターミナル上に削除対象のnode idと距離、またinput.osmと同一の階層に`input_colliner.osm`
+
+[find_collinear_nodesのREADME.md](https://github.com/saikocar/map_utils/blob/main/find_collinear_nodes/README.md)に詳細な説明があります。
+
 ## 問題報告
 問題を報告したい場合は、[Issues](https://github.com/saikocar/map_utils/issues) にて報告してください。
