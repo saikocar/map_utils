@@ -1,46 +1,78 @@
 
-# OSM Colinear Node Cleanup Tool
+# find collinear nodes
 
-This script processes an OSM (OpenStreetMap) file and removes nodes from `way` elements that are determined to be colinear, i.e., they lie approximately on a straight line between two other nodes. This helps reduce redundancy in map data while preserving geometric accuracy.
+このスクリプトは、Vector Map Builderで作成されたlanelet2ファイル(.osm)ファイルにおいて、特定の種類の`linestring`に含まれる`point`が直線上に並んでいるかを判定し、不要な中間点を削除することでデータを簡素化し、管理コストを下げるためのツールです。
 
-## Features
+## 特徴
 
-- Detects and removes colinear nodes using 3D coordinates (`local_x`, `local_y`, `ele`).
-- Only removes nodes that:
-  - Appear to lie on a straight line within a tolerance (`eps`).
-  - Are not referenced by any other way.
-- Ensures that the first and last nodes of each way are preserved.
-- Only modifies `way` elements with specific `type` tags: `line_thin`, `virtual`, `road_border`, `stop_line`, `fence`, `guard_rail`.
-- Preserves all `node`, `relation`, and untouched `way` data.
-- Does not produce an output file if no changes are made.
+- 指定された`type`属性（例：`line_thin`、`virtual`など）を持つ`way`のみに処理を限定
+- `local_x`, `local_y`, `ele` の情報を用いた3次元直線上の判定
+- 両端ノードは常に保持
+- 中間ノードが他の`way`から参照されている場合は削除対象外
+- 削除後、修正されたOSMファイルを新たに保存（差分がある場合のみ）
 
-## Requirements
-
-- Python 3.x
-
-## Usage
+## 使用方法
 
 ```bash
-python script.py input.osm [--eps EPSILON] [--m | --cm | --mm]
+python your_script.py input.osm --eps 1e-4
 ```
 
-- `--eps`: Error tolerance for determining colinearity (in meters). Default is `1e-15`.
-- `--m`, `--cm`, `--mm`: Unit multipliers to apply to `--eps`.
-  - Use only one of these options at a time.
-  - For example, `--cm` sets the effective epsilon to `eps * 0.01`.
+### 単位オプション
 
-### Example
+以下のオプションのうち **いずれか一つ** を指定できます（重複指定不可）：
+
+- `--m`：メートル単位（デフォルト、単位を明示的に記述するためのものです）
+- `--cm`：センチメートル（`--eps`の値を100分の1に補正します）
+- `--mm`：ミリメートル（`--eps`の値を1000分の1に補正します）
+
+例：
 
 ```bash
-python script.py map.osm --eps 1e-4 --cm
+python your_script.py input.osm --eps 10 --cm
 ```
 
-## Output
+この例では、許容誤差は 10 cm（= 0.1 m）になります。
 
-If changes are detected, a new file named `<original>_colinear.osm` will be created in the same directory.
+## 出力
 
-## Notes
+- 入力ファイル名に `_colinear` を付加したファイル名で保存されます。
+- 例： `input.osm` → `input_colinear.osm`
+- 変更がなかった場合は、`_colinear`ファイルの出力は行われません。
 
-- Only nodes with valid `local_x`, `local_y`, and `ele` tags will be considered.
-- If a node is shared across multiple ways, it will not be removed even if it's colinear.
-- The script will notify you of any removed nodes and the associated geometric deviation.
+## ログ出力例
+
+処理されたノードについて、以下のようなメッセージが表示されます：
+
+```
+id:12345:error=2.13400e-05
+```
+
+これはノードid `12345` が直線上にあると判断され、誤差（距離）が `2.13400e-05` メートルであったことを示します。
+
+## 対象となる way のタイプ
+
+以下の`type`を持つwayのみを処理対象とします：
+
+- `line_thin`
+- `virtual`
+- `road_border`
+- `stop_line`
+- `fence`
+- `guard_rail`
+
+それ以外のway、あるいは3ノード未満のwayはスキップされます。
+
+## フローチャート
+
+1.ファイルの読み込み及び引数を解析
+2.対象となるwayが参照するnodeを確認し、複数回登場するものを複数のwayが参照しているものとみなす
+3.wayから連続する3点を取り出して端の2点を結ぶ直線と中央の点との距離をもとめ、引数で設定された距離いないかどうか判定する
+4.3.を繰り返すことで削除対象のnodeのリストを作成して表示する
+5.削除対象のリストを作成してwayから該当のnodeを外す
+6.ファイルを出力する
+
+## 注意事項
+
+- 入力ファイルのノードは、`local_x`, `local_y`, `ele` の3つのタグを含む必要があります。
+- 処理対象外のwayやrelation、未使用ノードなどはそのまま保持され、出力ファイルに含まれます。
+- nodeの情報は残ります。消去したい場合はVector Map Builderで`warning`の`The Point is not associated with Linestrings or Polygons.`の欄を利用することを推奨します。
