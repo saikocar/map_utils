@@ -1,4 +1,4 @@
-# OSM Traffic Light Relation Checker
+# check signal config
 
 このスクリプトは、Vector Map Builderで作成したOSMファイル内の traffic light に関するRegulatoryElementsに関するタグを解析し、以下を検出します：
 
