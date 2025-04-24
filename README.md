@@ -3,14 +3,14 @@
 
 また地図データはOpenStreetMapのosmファイルと拡張子は同じですがtier4のVector Map Builder（VMB）を利用して編集していることが前提となります。
 
-VMBで作成したosmファイルはAutoware向けの独自の仕様となっています。
+VMBで作成したosmファイルはAutoware向けの独自の仕様となっていることに注意してください。
 
 スクリプトの詳細は各ディレクトリの個別のREADMEを参照してください。
 
 ## check_crosswalk_regulatory
 crosswalkにregulatoryが関連付けられたままのものを表示するスクリプトです。
 
-このスクリプトはgenerate_crosswalk_regulatoryの事後処理向けです。
+このスクリプトはgenerate_crosswalk_regulatoryの事後処理用です。
 
 ## check_kvtypo
 VMBのミスタイプを探索するスクリプトです。
