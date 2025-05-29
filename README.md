@@ -30,6 +30,9 @@ crosswalkに関してregulatoryが未設定ならそのcrosswalkにregulatoryを
 ## make_crosswalk_polygon
 crosswalkのpointに連動するcrosswalk_polygonを生成するスクリプトです。
 
+## modify_lrdiff_lane
+laneletの左右のlinestringのpointの数をpointを挿入することで一致させるスクリプトです。
+
 ## osm_relation_checker
 左右のLineStringのPointの数が異なるLaneのidを表示するスクリプトです。
 
